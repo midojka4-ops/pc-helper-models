@@ -3,10 +3,13 @@
 Файлы моделей для программы «Помощник» — офлайн-помощника для Windows 10/11.
 Здесь лежат **только модели и их лицензии**. Кода программы в этом репозитории нет.
 
-Модели выложены в релизе [models-v1](../../releases/tag/models-v1). Программа сама скачивает
-нужную модель отсюда, а если GitHub недоступен — с Hugging Face.
+Модели выложены в двух релизах. Программа сама скачивает нужные файлы отсюда, а если GitHub недоступен —
+с Hugging Face.
+- [models-v1](../../releases/tag/models-v1) — модели умного режима (понимание команд);
+- [vision-v1](../../releases/tag/vision-v1) — модели для фото: лица, люди, что на фото, узнавание знакомых,
+  подробное описание фото.
 
-## Модели
+## Модели умного режима (models-v1)
 
 | Файл | Исходная модель | Квантование (откуда взято) | Лицензия |
 |---|---|---|---|
@@ -20,6 +23,18 @@
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Файлы GGUF не изменялись:
 это те же квантования Q4_K_M, что и на Hugging Face. Текст лицензии лежит в релизе рядом с каждой
 моделью (`имя-модели.LICENSE.txt`).
+
+## Модели для фото (vision-v1)
+
+| Файл | Что делает | Источник | Лицензия |
+|---|---|---|---|
+| `face_detection_yunet_2023mar.onnx` | находит лица | [opencv/face_detection_yunet](https://huggingface.co/opencv/face_detection_yunet) (OpenCV Zoo) | MIT, Copyright (c) 2020 Shiqi Yu |
+| `object_detection_yolox_2022nov.onnx` | находит людей | [opencv/object_detection_yolox](https://huggingface.co/opencv/object_detection_yolox) (OpenCV Zoo, YOLOX — Megvii) | Apache 2.0 |
+| `siglip_vision_quantized.onnx` | понимает, что на фото | [Xenova/siglip-base-patch16-224](https://huggingface.co/Xenova/siglip-base-patch16-224) (конверсия [google/siglip-base-patch16-224](https://huggingface.co/google/siglip-base-patch16-224)) | Apache 2.0 |
+| `face_recognition_sface_2021dec.onnx` | узнаёт знакомых | [opencv/face_recognition_sface](https://huggingface.co/opencv/face_recognition_sface) (OpenCV Zoo) | Apache 2.0 |
+| `Qwen3VL-4B-Instruct-Q4_K_M.gguf` + `mmproj-Qwen3VL-4B-Instruct-Q8_0.gguf` | подробно описывает фото | [Qwen/Qwen3-VL-4B-Instruct-GGUF](https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct-GGUF) | Apache 2.0 |
+
+Файлы не изменялись. Текст лицензии лежит в релизе рядом с каждой моделью (`имя-модели.LICENSE.txt`).
 
 ## Большие файлы
 
